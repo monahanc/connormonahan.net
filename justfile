@@ -4,7 +4,7 @@ setup:
 serve:
     npm run dev
 
-build:
+build: setup
     npm run build
 
 preview:
