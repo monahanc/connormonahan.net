@@ -1,0 +1,28 @@
+---
+import { render } from 'astro:content';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { postDate, postTitle, type Post } from '../lib/posts';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const title = postTitle(post);
+---
+
+<SiteLayout title={`${title} | Connor Monahan`} description={post.data.summary ?? title}>
+  <article>
+    <h1>{title}</h1>
+    <time class="post-date" datetime={postDate(post).toISOString()}>
+      {postDate(post).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'UTC',
+      })}
+    </time>
+    <Content />
+  </article>
+</SiteLayout>

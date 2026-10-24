@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { postDate, postPath, postTitle, sortedPosts } from '../lib/posts';
+
+const posts = sortedPosts(await getCollection('posts'))
+  .filter((post) => post.data.status !== 'hidden')
+  .slice(0, 5);
+---
+
+<SiteLayout>
+  <img class="profile" src="/images/profile.jpg" alt="Connor Monahan" />
+  <h1>Hi, my name is Connor Monahan.</h1>
+  <p>
+    I work at Tesla writing vehicle software. In a previous life, I was a student at Washington
+    University in St. Louis. I have worked on a variety of computer vision and embedded/real-time
+    software applications.
+  </p>
+  <p>
+    Follow me on{' '}
+    <a href="https://github.com/cmastudios">GitHub</a>,
+    {' '}
+    <a href="https://www.linkedin.com/in/connor-monahan-a23318146/">LinkedIn</a>, or by{' '}
+    <a href="mailto:cma2714@gmail.com">email</a>.
+  </p>
+
+  <h2>Recent posts</h2>
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li class="post-list-item">
+        <a href={postPath(post)}>{postTitle(post)}</a>
+        <time class="post-date" datetime={postDate(post).toISOString()}>
+          {postDate(post).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            timeZone: 'UTC',
+          })}
+        </time>
+      </li>
+    ))}
+  </ul>
+  <p><a href="/posts.html">Browse all posts</a></p>
+</SiteLayout>

@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { postDate, postPath, postTitle, sortedPosts } from '../../lib/posts';
+
+const posts = sortedPosts(await getCollection('posts')).filter(
+  (post) => post.data.status !== 'hidden',
+);
+---
+
+<SiteLayout title="Posts | Connor Monahan">
+  <h1>Posts</h1>
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li class="post-list-item">
+        <a href={postPath(post)}>{postTitle(post)}</a>
+        <time class="post-date" datetime={postDate(post).toISOString()}>
+          {postDate(post).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            timeZone: 'UTC',
+          })}
+        </time>
+      </li>
+    ))}
+  </ul>
+</SiteLayout>

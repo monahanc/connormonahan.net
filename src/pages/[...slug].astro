@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import PostPage from '../components/PostPage.astro';
+import { postPath } from '../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: {
+      slug: postPath(post).replace(/^\/|\/$/g, '').replace(/\.html$/, ''),
+    },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<PostPage post={post} />

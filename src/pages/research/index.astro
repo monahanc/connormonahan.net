@@ -1,0 +1,98 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+---
+
+<SiteLayout title="My Research | Connor Monahan">
+  <h1>My Research</h1>
+  <p>
+    All the papers I've worked on for conferences or for classwork during high school, university,
+    and my career.
+  </p>
+  <hr />
+
+  <article class="paper">
+    <img src="/research/cse559.png" alt="Stitched depth map" />
+    <h2>
+      <a href="/research/cse559.pdf">
+        Real-time multi-sensor RGB-D image stitching and noise removal
+      </a>
+    </h2>
+    <p>Non-published report implementing a Kinect image stitching algorithm and suggested improvements.</p>
+    <p>Authors: Connor Monahan</p>
+    <p>Venue: CSE559A Final Project</p>
+  </article>
+
+  <article class="paper">
+    <img src="/research/cmimi19.png" alt="Chest X-ray with labeled activations" />
+    <h2>
+      <a href="https://arxiv.org/pdf/1907.11849.pdf">Genetic Deep Learning for Lung Cancer Screening</a>
+    </h2>
+    <p>
+      Part of my work at Innovation Dx extending NEAT to deep neural networks as a hyperparameter
+      and architecture optimizer.
+    </p>
+    <p>Authors: Hunter Park, Connor Monahan</p>
+    <p>Venue: C-MIMI 2019</p>
+  </article>
+
+  <article class="paper">
+    <img src="/research/jshs17.png" alt="Chest X-ray with annotated score" />
+    <h2>
+      <a
+        href="/research/Predicting-the-Presence-of-Cancer-in-Medical-Images-using-Convolutional-Neural-Networks.pdf"
+      >
+        Predicting the Presence of Cancer in Medical Images using Convolutional Neural Networks
+      </a>
+    </h2>
+    <p>High school research on building classifiers on the PLCO dataset.</p>
+    <p>Authors: Connor Monahan</p>
+    <p>Venue: JSHS 2017</p>
+  </article>
+
+  <article class="paper">
+    <img src="/research/jshs16.png" alt="Segmented depth map" />
+    <h2>
+      <a href="/research/Depth-Image-Segmentation-Using-Statistical-Methods.pdf">
+        Depth Image Segmentation Using Statistical Methods
+      </a>
+    </h2>
+    <p>High school project segmenting pixels into classes where all are within one standard deviation (plus tolerance).</p>
+    <p>Authors: Connor Monahan</p>
+    <p>Venue: JSHS 2016</p>
+  </article>
+
+  <article class="paper">
+    <img src="/research/jshs15.png" alt="IR view of scene targets" />
+    <h2>
+      <a href="/research/Local-Positioning-System-with-Multiple-Cameras.pdf">
+        Local Positioning System with Multiple Cameras
+      </a>
+    </h2>
+    <p>High school project triangulating position from static targets in the environment.</p>
+    <p>Authors: Connor Monahan</p>
+    <p>Venue: JSHS 2015</p>
+  </article>
+</SiteLayout>
+
+<style>
+  .paper {
+    display: flow-root;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .paper img {
+    float: left;
+    width: 130px;
+    margin: 0.25rem 1rem 0.75rem 0;
+  }
+
+  .paper h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+  }
+
+  .paper p {
+    margin: 0.35rem 0;
+  }
+</style>
